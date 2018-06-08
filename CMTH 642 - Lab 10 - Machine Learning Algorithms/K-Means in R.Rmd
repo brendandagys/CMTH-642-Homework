@@ -1,0 +1,32 @@
+
+---
+title: "K-Means in R"
+output: word_document
+---
+
+In our previous video, we have discussed the k-means algorithm.
+Here is an example of k-means in R.
+
+We will be using the iris data set for this example.
+```{r}
+data(iris)
+head(iris)
+str(iris)
+```
+
+Now, we remove the Species column from the iris dataset.
+```{r}
+iris_new <- iris[-5]
+```
+
+Let's use k-means clustering. We should indicate the number of clusters. Since Species has 3 levels, let's have 3 clusters.
+```{r}
+iris_kmeans<- kmeans(iris_new, 3) 
+iris_kmeans
+```
+
+Since we already know the levels of Species, we can check our clustering result and see how many mistakes we have made. Here is the table:
+```{r}
+table(iris$Species,iris_kmeans$cluster)
+```
+
